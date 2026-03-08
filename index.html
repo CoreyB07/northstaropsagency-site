@@ -50,16 +50,24 @@
   </script>
   <style>
     :root {
-      --bg: #030305;
-      --panel: #0a0b10;
-      --panel-soft: #11131b;
-      --text: #f3f6fb;
-      --muted: #9fa8bc;
-      --line: #1f2433;
-      --accent: #5be2ff;
-      --accent-2: #89ffca;
+      --bg: #F8FAFC;
+      --bg-alt: #EEF2F7;
+      --surface: #FFFFFF;
+      --text: #334155;
+      --heading: #0F172A;
+      --muted: #475569;
+      --line: #D8E1EA;
+      --accent: #4F46E5;
+      --accent-hover: #4338CA;
+      --secondary: #F59E0B;
+      --secondary-hover: #D97706;
+      --dark-bg: #0F172A;
+      --footer-bg: #111827;
+      --hero-text: #CBD5E1;
+      --hero-heading: #F8FAFC;
+      --hero-eyebrow: #A5B4FC;
       --radius: 18px;
-      --shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -73,10 +81,7 @@
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(900px 520px at 8% -10%, rgba(91, 226, 255, 0.09), transparent 52%),
-        radial-gradient(700px 360px at 95% 8%, rgba(137, 255, 202, 0.06), transparent 48%),
-        radial-gradient(circle at 50% 50%, #080c14, var(--bg) 80%);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       letter-spacing: 0.01em;
@@ -85,10 +90,11 @@
     a {
       color: var(--accent);
       text-decoration: none;
+      transition: color 160ms ease;
     }
 
     a:hover {
-      color: #7feaff;
+      color: var(--accent-hover);
     }
 
     .container {
@@ -100,9 +106,9 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      border-bottom: 1px solid rgba(31, 36, 51, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
-      background: rgba(3, 3, 5, 0.72);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .nav-wrap {
@@ -136,7 +142,7 @@
     }
 
     .nav-links a:not(.btn) {
-      color: #d7deec;
+      color: var(--hero-text);
     }
 
     .nav-links a:not(.btn):hover {
@@ -159,37 +165,39 @@
     }
 
     .btn-primary {
-      color: #001318;
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 25px rgba(91, 226, 255, 0.55), 0 10px 24px rgba(91, 226, 255, 0.3);
+      color: #FFFFFF;
+      background: var(--accent);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
     }
 
     .btn-primary:hover {
-      color: #001318;
-      box-shadow: 0 0 35px rgba(91, 226, 255, 0.7), 0 12px 26px rgba(91, 226, 255, 0.4);
+      color: #FFFFFF;
+      background: var(--accent-hover);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
     }
 
     .nav-links .btn-primary {
-      color: #001318;
-      border-color: rgba(0, 0, 0, 0.38);
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.1);
       font-weight: 700;
-      box-shadow: 0 0 15px rgba(91, 226, 255, 0.4), 0 10px 24px rgba(91, 226, 255, 0.34), inset 0 -1px 0 rgba(0, 0, 0, 0.28);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     }
 
     .nav-links .btn-primary:hover {
-      color: #001318;
-      box-shadow: 0 0 20px rgba(91, 226, 255, 0.5), 0 12px 26px rgba(91, 226, 255, 0.42), inset 0 -1px 0 rgba(0, 0, 0, 0.33);
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
     }
 
     .btn-ghost {
-      color: #e7edfa;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--hero-text);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       background: transparent;
     }
 
     .btn-ghost:hover {
       background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #FFFFFF;
     }
 
     .section {
@@ -197,13 +205,34 @@
     }
 
     .hero {
-      padding-top: 6.2rem;
-      padding-bottom: 4.2rem;
+      position: relative;
+      padding-top: 8rem;
+      padding-bottom: 6.5rem;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      /* Dark overlay + Background image */
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.85)),
+        url('herosectionart.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--hero-text);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero .eyebrow {
+      color: var(--hero-eyebrow);
     }
 
     .eyebrow {
       margin: 0;
-      color: #8ea9cc;
+      color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.12em;
       font-weight: 700;
@@ -216,6 +245,7 @@
       margin-top: 0;
       line-height: 1.14;
       letter-spacing: -0.02em;
+      color: var(--heading);
     }
 
     h1 {
@@ -225,7 +255,11 @@
       font-size: clamp(3rem, 6.8vw, 5.6rem);
       font-weight: 800;
       letter-spacing: -0.05em;
-      text-shadow: 0 0 60px rgba(91, 226, 255, 0.15), 0 0 120px rgba(91, 226, 255, 0.05);
+    }
+
+    .hero h1 {
+      color: var(--hero-heading);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     h2 {
@@ -246,8 +280,13 @@
 
     .lead {
       max-width: 64ch;
-      color: #d1d8e8;
+      color: var(--text);
       font-size: 1.08rem;
+    }
+
+    .hero .lead {
+      color: var(--hero-text);
+      opacity: 1;
     }
 
     .hero-actions {
@@ -281,15 +320,14 @@
     .cap-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background:
-        linear-gradient(155deg, rgba(17, 19, 27, 0.95), rgba(8, 9, 14, 0.95));
+      background: var(--surface);
       padding: 1.15rem 1.15rem 1.05rem;
       box-shadow: var(--shadow);
       min-height: 180px;
     }
 
     .cap-card p {
-      color: #c2cbdf;
+      color: var(--text);
       font-size: 0.94rem;
       margin-bottom: 0;
     }
@@ -297,9 +335,8 @@
     .cap-icon {
       width: 44px;
       height: 44px;
-      color: var(--accent);
+      color: var(--secondary);
       margin-bottom: 1.2rem;
-      filter: drop-shadow(0 0 12px rgba(91, 226, 255, 0.6));
     }
 
     .cap-1 {
@@ -325,7 +362,7 @@
     .kicker {
       display: inline-block;
       margin-bottom: 0.55rem;
-      color: #a4b2cb;
+      color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.09em;
       font-size: 0.7rem;
@@ -335,7 +372,7 @@
     .approach {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      background: rgba(10, 11, 16, 0.55);
+      background: var(--bg-alt);
     }
 
     .steps {
@@ -352,18 +389,18 @@
       left: 10%;
       right: 10%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), rgba(137, 255, 202, 0.8), var(--accent), transparent);
-      box-shadow: 0 0 12px rgba(91, 226, 255, 0.6);
+      background: linear-gradient(90deg, transparent, var(--line), var(--line), transparent);
       z-index: 0;
     }
 
     .step {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(17, 19, 27, 0.92);
+      background: var(--surface);
       padding: 1.08rem;
       position: relative;
       z-index: 1;
+      box-shadow: var(--shadow);
     }
 
     .step-num {
@@ -374,9 +411,9 @@
       border-radius: 50%;
       font-size: 1.3rem;
       font-weight: 800;
-      color: #001318;
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 20px rgba(91, 226, 255, 0.4);
+      color: #FFFFFF;
+      background: var(--accent);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
       margin-bottom: 1rem;
     }
 
@@ -398,7 +435,7 @@
     .final-cta {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(17, 19, 27, 0.86);
+      background: var(--surface);
       box-shadow: var(--shadow);
       padding: 1.25rem;
     }
@@ -407,7 +444,7 @@
       display: block;
       background: transparent;
       padding: 0;
-      border: 1px solid rgba(91, 226, 255, 0.2);
+      border: 1px solid var(--line);
       overflow: hidden;
       box-shadow: var(--shadow);
     }
@@ -428,17 +465,16 @@
       line-height: 1;
       transform: rotate(-3deg);
       opacity: 0.9;
-      text-shadow: 0 0 12px rgba(91, 226, 255, 0.3);
     }
 
     .founder-card p {
-      color: #c6cfe1;
+      color: var(--text);
     }
 
     .list {
       margin: 0.6rem 0 0;
       padding-left: 1.15rem;
-      color: #c6cfe1;
+      color: var(--text);
     }
 
     .list li {
@@ -462,7 +498,7 @@
     .section-surface {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      background: rgba(10, 11, 16, 0.55);
+      background: var(--bg-alt);
     }
 
     .demo-note {
@@ -472,13 +508,13 @@
       margin-bottom: 1rem;
       padding: 0.35rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(91, 226, 255, 0.35);
-      color: #9dcde0;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: var(--secondary-hover);
       font-size: 0.76rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: rgba(20, 35, 45, 0.35);
+      background: rgba(245, 158, 11, 0.1);
     }
 
     .results-layout {
@@ -500,7 +536,7 @@
     .quote-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(17, 19, 27, 0.9);
+      background: var(--surface);
       box-shadow: var(--shadow);
     }
 
@@ -509,7 +545,7 @@
     }
 
     .metric-label {
-      color: #9fb0cc;
+      color: var(--muted);
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -522,12 +558,12 @@
       font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 0.35rem;
-      color: #e8f8ff;
+      color: var(--heading);
     }
 
     .metric-detail {
       margin: 0;
-      color: #9fb0cc;
+      color: var(--text);
       font-size: 0.9rem;
     }
 
@@ -556,21 +592,21 @@
       gap: 0.55rem;
       align-items: center;
       font-size: 0.85rem;
-      color: #b1bfd8;
+      color: var(--text);
     }
 
     .bar-track {
       height: 0.55rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--bg-alt);
       overflow: hidden;
     }
 
     .bar-fill {
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 12px rgba(91, 226, 255, 0.45);
+      background: var(--accent);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
     }
 
     .products-grid {
@@ -596,23 +632,24 @@
       font-size: 0.7rem;
       padding: 0.25rem 0.5rem;
       border-radius: 999px;
-      border: 1px solid rgba(137, 255, 202, 0.45);
-      color: #b5ffe2;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--secondary-hover);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 700;
+      background: rgba(245, 158, 11, 0.1);
     }
 
     .product-value {
       font-size: 0.86rem;
-      color: #a5b7d5;
+      color: var(--secondary-hover);
       font-weight: 700;
     }
 
     .product-list {
       margin: 0.65rem 0 0;
       padding-left: 1rem;
-      color: #c6cfe1;
+      color: var(--text);
       font-size: 0.9rem;
     }
 
@@ -633,20 +670,20 @@
     .quote-icon {
       width: 24px;
       height: 24px;
-      color: #91f0ff;
+      color: var(--accent);
       margin-bottom: 0.7rem;
-      filter: drop-shadow(0 0 10px rgba(91, 226, 255, 0.4));
+      opacity: 0.3;
     }
 
     .quote-text {
       margin: 0 0 0.8rem;
-      color: #d7e1f5;
+      color: var(--text);
       font-size: 0.95rem;
     }
 
     .quote-author {
       margin: 0;
-      color: #a8b6d0;
+      color: var(--muted);
       font-size: 0.85rem;
     }
 
@@ -667,9 +704,10 @@
     .contact-form-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(17, 19, 27, 0.9);
+      background: var(--surface);
       box-shadow: var(--shadow);
       padding: 1.15rem;
+      color: var(--text);
     }
 
     .contact-points {
@@ -681,7 +719,7 @@
     }
 
     .contact-points li {
-      color: #c6d0e3;
+      color: var(--text);
       font-size: 0.94rem;
     }
 
@@ -703,7 +741,7 @@
     .contact-form label {
       display: grid;
       gap: 0.4rem;
-      color: #cfd9eb;
+      color: var(--heading);
       font-size: 0.9rem;
       font-weight: 600;
     }
@@ -712,10 +750,10 @@
     .contact-form select,
     .contact-form textarea {
       width: 100%;
-      border: 1px solid #2b3247;
+      border: 1px solid var(--line);
       border-radius: 10px;
-      background: rgba(5, 9, 16, 0.92);
-      color: #e8effe;
+      background: var(--bg);
+      color: var(--heading);
       padding: 0.65rem 0.72rem;
       font: inherit;
     }
@@ -729,8 +767,8 @@
     .contact-form select:focus,
     .contact-form textarea:focus {
       outline: none;
-      border-color: rgba(91, 226, 255, 0.7);
-      box-shadow: 0 0 0 2px rgba(91, 226, 255, 0.18);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
     }
 
     .contact-meta {
@@ -758,7 +796,7 @@
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(17, 19, 27, 0.9);
+      background: var(--surface);
       box-shadow: var(--shadow);
       min-height: 280px;
     }
@@ -798,19 +836,21 @@
       padding: 0.32rem 0.7rem;
       width: fit-content;
       border-radius: 999px;
-      border: 1px solid rgba(91, 226, 255, 0.42);
-      background: rgba(7, 13, 20, 0.72);
-      color: #d2edff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(15, 23, 42, 0.8);
+      color: #FFFFFF;
       font-size: 0.74rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(4px);
     }
 
     .site-footer {
-      border-top: 1px solid var(--line);
-      padding: 1.2rem 0 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 3rem 0;
+      background: var(--footer-bg);
+      color: #E5E7EB;
     }
 
     .footer-wrap {
@@ -819,8 +859,16 @@
       align-items: center;
       gap: 0.8rem;
       flex-wrap: wrap;
-      color: #a6b1c8;
+      color: #94A3B8;
       font-size: 0.92rem;
+    }
+
+    .footer-wrap a {
+      color: #E2E8F0;
+    }
+
+    .footer-wrap a:hover {
+      color: var(--secondary);
     }
 
     .reveal {
@@ -908,7 +956,17 @@
       }
 
       .hero {
-        padding-top: 4.8rem;
+        padding-top: 7rem;
+        min-height: 70vh;
+        text-align: center;
+      }
+
+      .hero-content {
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
       }
 
       .section {
@@ -942,18 +1000,20 @@
   <main id="top">
     <section class="hero section reveal">
       <div class="container">
-        <p class="eyebrow">Founder-Led Digital Operations Partner</p>
-        <h1>Built for owners who need execution, not agency noise.</h1>
-        <p class="lead">
-          Northstar Ops Agency helps small businesses modernize customer experience, strengthen brand systems,
-          and streamline operations through practical digital transformation and automation.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:coreybuchanan79@gmail.com?subject=Start%20a%20Partnership">Start a
-            Partnership</a>
-          <a class="btn btn-ghost" href="#capabilities">Explore Capabilities</a>
+        <div class="hero-content">
+          <p class="eyebrow">Founder-Led Digital Operations Partner</p>
+          <h1>Built for owners who need execution, not agency noise.</h1>
+          <p class="lead">
+            Northstar Ops Agency helps small businesses modernize customer experience, strengthen brand systems,
+            and streamline operations through practical digital transformation and automation.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:coreybuchanan79@gmail.com?subject=Start%20a%20Partnership">Start a
+              Partnership</a>
+            <a class="btn btn-ghost" href="#capabilities">Explore Capabilities</a>
+          </div>
+          <p class="hero-note">You work directly with Corey and Kristen. Typical response time is within 24 hours.</p>
         </div>
-        <p class="hero-note">You work directly with Corey and Kristen. Typical response time is within 24 hours.</p>
       </div>
     </section>
 
@@ -1057,7 +1117,8 @@
 
     <section id="results" class="section reveal">
       <div class="container">
-        <span class="demo-note"><i data-lucide="flask-conical" style="width:14px;height:14px;"></i> Sample Showcase Data</span>
+        <span class="demo-note"><i data-lucide="flask-conical" style="width:14px;height:14px;"></i> Sample Showcase
+          Data</span>
         <h2>Business Growth Snapshot</h2>
         <p class="section-head">
           Example KPI outcomes used for planning and visual sales conversations with prospective clients.
@@ -1091,27 +1152,37 @@
             <div class="chart-stack">
               <div class="bar-row">
                 <span>Month 1</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 46%;"></div></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 46%;"></div>
+                </div>
                 <span>46%</span>
               </div>
               <div class="bar-row">
                 <span>Month 2</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 64%;"></div></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 64%;"></div>
+                </div>
                 <span>64%</span>
               </div>
               <div class="bar-row">
                 <span>Month 3</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 78%;"></div></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 78%;"></div>
+                </div>
                 <span>78%</span>
               </div>
               <div class="bar-row">
                 <span>Month 4</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 84%;"></div></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 84%;"></div>
+                </div>
                 <span>84%</span>
               </div>
               <div class="bar-row">
                 <span>Month 5</span>
-                <div class="bar-track"><div class="bar-fill" style="width: 91%;"></div></div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width: 91%;"></div>
+                </div>
                 <span>91%</span>
               </div>
             </div>
@@ -1173,7 +1244,8 @@
 
     <section id="testimonials" class="section reveal">
       <div class="container">
-        <span class="demo-note"><i data-lucide="message-square-quote" style="width:14px;height:14px;"></i> Sample Testimonials</span>
+        <span class="demo-note"><i data-lucide="message-square-quote" style="width:14px;height:14px;"></i> Sample
+          Testimonials</span>
         <h2>What Clients Say</h2>
         <p class="section-head">
           Placeholder testimonial content for layout and sales demonstration purposes.
@@ -1181,21 +1253,25 @@
         <div class="quotes-grid">
           <article class="quote-card">
             <i data-lucide="quote" class="quote-icon"></i>
-            <p class="quote-text">“They took our digital chaos and turned it into a clean operating system we can actually manage.”</p>
+            <p class="quote-text">“They took our digital chaos and turned it into a clean operating system we can
+              actually manage.”</p>
             <p class="quote-author">Sample Client • Local Service Business</p>
           </article>
           <article class="quote-card">
             <i data-lucide="quote" class="quote-icon"></i>
-            <p class="quote-text">“The visual upgrade immediately made our company feel more established and trustworthy.”</p>
+            <p class="quote-text">“The visual upgrade immediately made our company feel more established and
+              trustworthy.”</p>
             <p class="quote-author">Sample Client • Retail Brand</p>
           </article>
           <article class="quote-card">
             <i data-lucide="quote" class="quote-icon"></i>
-            <p class="quote-text">“Response times dropped and lead quality improved after they reworked our workflow stack.”</p>
+            <p class="quote-text">“Response times dropped and lead quality improved after they reworked our workflow
+              stack.”</p>
             <p class="quote-author">Sample Client • Home Services Team</p>
           </article>
         </div>
-        <p class="disclaimer">Note: The data and testimonials in this section are sample content used for demonstration and design preview.</p>
+        <p class="disclaimer">Note: The data and testimonials in this section are sample content used for demonstration
+          and design preview.</p>
       </div>
     </section>
 
@@ -1268,16 +1344,21 @@
       <div class="container">
         <h2>Contact Northstar Ops</h2>
         <p class="section-head">
-          Send a quick project request and we will respond with next-step recommendations, timeline direction, and scope options.
+          Send a quick project request and we will respond with next-step recommendations, timeline direction, and scope
+          options.
         </p>
         <div class="contact-wrap">
           <article class="contact-card">
             <h3>Prefer Direct Email?</h3>
-            <p>Use whichever contact method feels best for you. We support both form inquiries and direct email outreach.</p>
+            <p>Use whichever contact method feels best for you. We support both form inquiries and direct email
+              outreach.</p>
             <ul class="contact-points">
-              <li><strong>Business Email:</strong> <a href="mailto:hello@northstaropsagency.com">hello@northstaropsagency.com</a></li>
-              <li><strong>Founder:</strong> <a href="mailto:coreybuchanan79@gmail.com">coreybuchanan79@gmail.com</a></li>
-              <li><strong>Partner:</strong> <a href="mailto:kristencopeland07@gmail.com">kristencopeland07@gmail.com</a></li>
+              <li><strong>Business Email:</strong> <a
+                  href="mailto:hello@northstaropsagency.com">hello@northstaropsagency.com</a></li>
+              <li><strong>Founder:</strong> <a href="mailto:coreybuchanan79@gmail.com">coreybuchanan79@gmail.com</a>
+              </li>
+              <li><strong>Partner:</strong> <a href="mailto:kristencopeland07@gmail.com">kristencopeland07@gmail.com</a>
+              </li>
             </ul>
             <p class="contact-meta">Typical response time is within 24 hours.</p>
           </article>
@@ -1325,10 +1406,12 @@
               </div>
               <label>
                 Project Details
-                <textarea name="message" required placeholder="Tell us what you need help with and your timeline."></textarea>
+                <textarea name="message" required
+                  placeholder="Tell us what you need help with and your timeline."></textarea>
               </label>
               <button type="submit" class="btn btn-primary">Send Inquiry</button>
-              <p class="contact-meta">If you prefer not to use forms, email <a href="mailto:hello@northstaropsagency.com">hello@northstaropsagency.com</a> directly.</p>
+              <p class="contact-meta">If you prefer not to use forms, email <a
+                  href="mailto:hello@northstaropsagency.com">hello@northstaropsagency.com</a> directly.</p>
             </form>
           </article>
         </div>
