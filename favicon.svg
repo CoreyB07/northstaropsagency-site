@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Northstar Ops Agency favicon">
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5be2ff"/>
+      <stop offset="1" stop-color="#89ffca"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#030305"/>
+  <path fill="url(#g)" d="M32 10l4.8 12.2L49 27l-12.2 4.8L32 44l-4.8-12.2L15 27l12.2-4.8L32 10z"/>
+</svg>
