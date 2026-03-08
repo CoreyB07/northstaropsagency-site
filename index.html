@@ -656,6 +656,71 @@
       font-size: 0.82rem;
     }
 
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: auto auto;
+      gap: 1rem;
+      grid-template-areas:
+        "menu dashboard"
+        "products products";
+    }
+
+    .showcase-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(17, 19, 27, 0.9);
+      box-shadow: var(--shadow);
+      min-height: 280px;
+    }
+
+    .showcase-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .showcase-menu {
+      grid-area: menu;
+    }
+
+    .showcase-dashboard {
+      grid-area: dashboard;
+    }
+
+    .showcase-products {
+      grid-area: products;
+      min-height: 360px;
+    }
+
+    .showcase-products img {
+      object-fit: contain;
+      background: #05070d;
+    }
+
+    .showcase-caption {
+      position: absolute;
+      left: 0.8rem;
+      right: 0.8rem;
+      bottom: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.32rem 0.7rem;
+      width: fit-content;
+      border-radius: 999px;
+      border: 1px solid rgba(91, 226, 255, 0.42);
+      background: rgba(7, 13, 20, 0.72);
+      color: #d2edff;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      backdrop-filter: blur(3px);
+    }
+
     .site-footer {
       border-top: 1px solid var(--line);
       padding: 1.2rem 0 2rem;
@@ -721,6 +786,19 @@
       .quotes-grid {
         grid-template-columns: 1fr;
       }
+
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "menu"
+          "dashboard"
+          "products";
+      }
+
+      .showcase-card {
+        min-height: 220px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -758,6 +836,7 @@
         <ul class="nav-links">
           <li><a href="#capabilities">Capabilities</a></li>
           <li><a href="#approach">Approach</a></li>
+          <li><a href="#showcase">Showcase</a></li>
           <li><a href="#results">Results</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -857,6 +936,29 @@
             <h3>Deploy, Refine, Scale</h3>
             <p>Deploy, refine, and document each system so your team can keep momentum with less operational drag.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" class="section reveal">
+      <div class="container">
+        <h2>Visual Showcase</h2>
+        <p class="section-head">
+          Example artwork and digital deliverables that illustrate the quality and direction of Northstar Ops execution.
+        </p>
+        <div class="showcase-grid">
+          <figure class="showcase-card showcase-menu">
+            <img src="digitalrestaurantmenuontablet.png" alt="Sample digital restaurant menu displayed on a tablet">
+            <figcaption class="showcase-caption">Menu Experience Mockup</figcaption>
+          </figure>
+          <figure class="showcase-card showcase-dashboard">
+            <img src="businessdashboardontablet.png" alt="Sample business growth dashboard displayed on a tablet">
+            <figcaption class="showcase-caption">Business Dashboard Mockup</figcaption>
+          </figure>
+          <figure class="showcase-card showcase-products">
+            <img src="digitalproductssystemsshowcase.png" alt="Sample digital products and systems showcase graphic">
+            <figcaption class="showcase-caption">Digital Products Showcase</figcaption>
+          </figure>
         </div>
       </div>
     </section>
